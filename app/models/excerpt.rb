@@ -15,6 +15,9 @@ class Excerpt < ActiveRecord::Base
            :through => :user_excerpt_liked,
            :dependent => :destroy, 
            :source => :user
+
+  has_many :comments,
+           :dependent => :destroy
   
   attr_accessible :content, :rating
   validates :content, :presence => true, 

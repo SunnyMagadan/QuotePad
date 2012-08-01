@@ -39,7 +39,8 @@ group :test do
 end
 
 group :development, :test do 
-  gem 'ruby_gntp'
+  #gem 'ruby_gntp'
+  gem 'libnotify'
   gem 'sqlite3'
   gem 'guard-rspec'
   gem 'guard-spork'
