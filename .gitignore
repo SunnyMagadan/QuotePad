@@ -16,3 +16,5 @@
 *.swp
 *.DS_Store
 public/assets/*
+.idea/
+bundler-stubs/

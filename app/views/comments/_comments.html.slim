@@ -1,0 +1,6 @@
+.comments
+  - @comments.each do | comment |
+    .comment
+      p #{author_link(comment.author)}
+      pre #{comment.comment}
+      small #{comment.created_at.to_s :long}

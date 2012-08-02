@@ -4,12 +4,12 @@ module ApplicationHelper
     return "badge-important" if rating < 0
   end
 
-  def author_link(excerpt)
-    author_name = excerpt.author_name
-    if excerpt.author.nil?
+  def author_link(author)
+    author_name = author.nil? ? "Anonimous" : author.display_name
+    if author.nil?
       author_name
     else
-      link_to author_name, user_path(excerpt.author)
+      link_to author_name, user_path(author)
     end
   end
 
@@ -55,4 +55,8 @@ module ApplicationHelper
     "<a href=#{url} data-method='put' data-remote='true' id='#{type}'>#{icon}</a>"
   end
 
+  def comments_link(excerpt)
+    link_to_remote("Comments(#{excerpt.comments.count})")
+    #raw "<a class='comments-link' href=#{excerpt_comments_path(excerpt)} data-type='json' data-remote='true'>Comments(#{excerpt.comments.count})</a>"
+  end
 end

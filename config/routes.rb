@@ -21,6 +21,10 @@ QuotePad::Application.routes.draw do
         :defaults => { :format => :js }
     get 'best', :on => :collection
     get 'latest', :on => :collection
+
+    resources :comments do
+      get 'index', :defaults => { :format => :js }
+    end
   end
 
   resources :users

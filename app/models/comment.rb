@@ -5,7 +5,7 @@ class Comment < ActiveRecord::Base
              :class_name => "Excerpt",
              :foreign_key => "excerpt_id"
 
-  belongs_to :user,
+  belongs_to :author,
              :class_name => "User",
              :foreign_key => "user_id"
 

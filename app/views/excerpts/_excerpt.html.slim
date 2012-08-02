@@ -1,10 +1,10 @@
-.excerpt
+.excerpt data-id="#{excerpt.id}"
   blockquote
     - if @show_id.nil?
       p #{link_to("##{excerpt.id}", excerpt_path(excerpt)) } |
-        #{author_link(excerpt)}
+        #{author_link(excerpt.author)}
     - else
-      p #{author_link(excerpt)}
+      p #{author_link(excerpt.author)}
     pre #{excerpt.content}
     small #{excerpt.created_at.to_s :long}
     = vote_down_link(excerpt)
@@ -17,3 +17,5 @@
     - if can? :update, excerpt
       br/
       = link_to " #{t(:edit_excerpt)}", edit_excerpt_path(excerpt)
+
+  = link_to "Comments(#{excerpt.comments.count})", excerpt_comments_path(excerpt), :remote => true

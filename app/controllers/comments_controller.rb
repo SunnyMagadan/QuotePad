@@ -10,4 +10,13 @@ class CommentsController < ApplicationController
     else
     end
   end
+
+  def index
+    comments = Comment.scoped_by_excerpt_id(params[:excerpt_id]) if params[:excerpt_id]
+    @excerpt_id = params[:excerpt_id]
+    @comments_html = render_to_string(:partial => 'comments', :locals => {:comments => comments}).html_safe
+    respond_to do |format|
+      format.js {render :content_type => 'text/javascript'}
+    end
+  end
 end
