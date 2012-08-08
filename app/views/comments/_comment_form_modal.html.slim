@@ -1,0 +1,8 @@
+= render :partial => 'shared/modal', :locals => { :title => 'Leave new comment', :content => render('form') }
+
+
+/!
+  .modal-footer
+    a.btn href="#"  data-dismiss="modal" Close
+    = link_to "Add comment", #, :remote => true, :class => 'add-comment'
+    a.btn.btn-primary href="#" Add comment

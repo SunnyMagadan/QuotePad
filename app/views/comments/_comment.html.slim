@@ -1,0 +1,5 @@
+.comment data-id="#{comment.id}"
+  p
+    | #{author_link(comment.author)} &nbsp;
+    small #{comment.created_at.to_s :long}
+  pre #{comment.comment}

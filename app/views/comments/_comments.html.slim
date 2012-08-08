@@ -1,6 +1,2 @@
 - @comments.each do | comment |
-  .comment
-    p
-      | #{author_link(comment.author)} &nbsp;
-      small #{comment.created_at.to_s :long}
-    pre #{comment.comment}
+  = render :partial => 'comment', :locals => {:comment => comment}

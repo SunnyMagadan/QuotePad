@@ -4,10 +4,7 @@ class CommentsController < ApplicationController
 
   def new
     @excerpt = Excerpt.find params[:excerpt_id]
-    if @excerpt
-      @comment = @excerpt.comments.new
-    else
-    end
+    @comment = @excerpt.comments.build
 
     respond_to do |format|
       format.js {render :content_type => 'text/javascript'}
@@ -16,10 +13,17 @@ class CommentsController < ApplicationController
 
   def create
     @excerpt = Excerpt.find params[:excerpt_id]
-    if @excerpt
-      @comment = @excerpt.comments.new params[:@comment]
-      @comment.user_id = current_user
-    else
+    @comment = @excerpt.comments.build params[:comment]
+    @comment.user_id = current_user.id
+
+    if @comment.save
+      respond_to do |format|
+        format.js {render :action => 'create', :content_type => 'text/javascript' and return}
+      end
+    end
+
+    respond_to do |format|
+      format.js {render :action => 'new', :content_type => 'text/javascript'}
     end
   end
 

@@ -1,3 +1,3 @@
-$("#comment-form").html "<%= escape_javascript(render('form')) %>"
-$("#comment-form").modal
+$("#comment-form-dialog").html "<%= escape_javascript(render('comment_form_modal')) %>"
+$("#comment-form-dialog").modal
   show: true
