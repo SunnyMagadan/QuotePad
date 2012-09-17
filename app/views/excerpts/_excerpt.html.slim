@@ -18,7 +18,7 @@
       br/
       = link_to " #{t(:edit_excerpt)}", edit_excerpt_path(excerpt)
 
-  = link_to "Comments(#{excerpt.comments.count})", excerpt_comments_path(excerpt), :remote => true
+  = link_to raw("Comments(<span>#{excerpt.comments.count}</span>)"), excerpt_comments_path(excerpt), :remote => true, :class => 'comments-count'
   = link_to "Leave comment", new_excerpt_comment_path(excerpt), :remote => true, :class => 'add-comment'
 
   .comments
